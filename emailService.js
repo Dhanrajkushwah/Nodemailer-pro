@@ -5,8 +5,9 @@ require('dotenv').config();
 const transporter = nodemailer.createTransport({
   service: 'gmail', // You can use other services like Yahoo, Outlook, etc.
   auth: {
-    user: 'dhanraj.kushwah007@gmail.com',
-    pass: '1083 398 181'
+    user: 'mahimagarg1602@gmail.com',
+    pass: 'uixv laul bjpd tqcc'
+
   }
 });
 
