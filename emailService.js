@@ -1,13 +1,12 @@
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 
-// Configure the transporter
-const transporter = nodemailer.createTransport({
-  service: 'gmail', // You can use other services like Yahoo, Outlook, etc.
-  auth: {
-    user: 'mahimagarg1602@gmail.com',
-    pass: 'uixv laul bjpd tqcc'
 
+const transporter = nodemailer.createTransport({
+  service: 'gmail', 
+  auth: {
+    user: process.env.EMAIL_USER, 
+    pass: process.env.EMAIL_PASS, 
   }
 });
 
@@ -15,11 +14,21 @@ const transporter = nodemailer.createTransport({
 const sendMail = async (to, subject, text) => {
   try {
     let info = await transporter.sendMail({
-      from: `"Dhanraj" <${process.env.EMAIL_USER}>`, // sender address
-      to: "dhanraj.kushwah007@gmail.com",
-      subject: "Email Task", // Subject line
-      text: "Hello How are you. Nodemailer is a module for Node.js applications to allow easy as cake email sending", // plain text body
+      from: `"Dhanraj" <${process.env.EMAIL_USER}>`, 
+      to:"dhanraj.kushwah007@gmail.com",
+      subject:"Send Email by Node mailer",
+      text:"Hello How are you?",
       html: "<b>Hello world?</b>", 
+      attachments: [
+        {
+          filename: 'Dhanrajk.pdf', 
+          path: 'path/to/Dhanrajk.pdf', 
+        },
+        {
+          filename: 'image.png', 
+          path: 'path/to/image.jpg',
+        },
+      ],
     });
 
     console.log('Message sent: %s', info.messageId);
